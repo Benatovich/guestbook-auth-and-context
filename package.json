@@ -18,7 +18,7 @@
     "testEnvironment": "jsdom"
   },
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --passWithNoTests",
     "test:watch": "npm run test -- --watch",
     "start": "webpack serve --hot --mode development --devtool eval-source-map --open",
     "start:watch": "npm run start",
