@@ -5,7 +5,6 @@ import Authentication from './views/Authentication'
 import PrivateRoute from './components/PrivateRoute'
 import List from './views/List'
 
-
 export default function App() {
   return (
     <UserProvider>
