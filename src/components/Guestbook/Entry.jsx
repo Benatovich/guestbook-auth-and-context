@@ -1,7 +1,13 @@
-import React from 'react'
-
-export default function Entry() {
+export default function Entry({ author, content, date }) {
   return (
-    <div>Entry</div>
+    <div>
+        <div>
+            <p>{content}</p>
+        </div>
+        <div>
+            <p>{author}</p>
+            <p>on {new Date(date).toLocaleString()}</p>
+        </div>
+    </div>
   )
 }
