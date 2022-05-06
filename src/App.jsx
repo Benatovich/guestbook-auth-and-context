@@ -13,7 +13,7 @@ export default function App() {
         <Route path='/login'>
           <Login />
         </Route>
-        <PrivateRoute path='/'>
+        <PrivateRoute exact path='/'>
           <EntryList />
         </PrivateRoute>
       </Switch>

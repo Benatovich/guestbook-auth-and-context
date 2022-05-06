@@ -22,7 +22,32 @@ export default function EntryList() {
   
     return (
       <>
-        {/* <EntryForm onAddEntry={} /> */}
+        <EntryForm onAddEntry={fetchEntries} />
+        {loading 
+          ? <p>LOADING</p>
+          : <>
+          <h1>Latest entries:</h1> 
+          <ul>
+            {entries.length ? (
+              entries.map(({ id, content, created_at }) => {
+                return (
+                  <li key={id}>
+                    <Entry 
+                      content={content}
+                      author={user.email}
+                      date={created_at}
+                    />
+                  </li>
+                )
+              })
+            ) : (
+              <li>
+                The guestbook is currently empty
+              </li>
+            )}
+          </ul>
+          </>
+          }
       </>
   )
 }
