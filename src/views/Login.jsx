@@ -101,12 +101,6 @@ const Login = () => {
                         <button
                             type='submit'
                         >
-                            {/* <span>
-                                <svg>
-                                <path />
-                                --- do we care about the stuff that goes here? what does it do? ---
-                                </svg>
-                            </span> */}
                             {isSigningUp ? 'Sign up' : 'Sign in'}
                         </button>
                         <p>

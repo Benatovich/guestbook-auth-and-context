@@ -1,3 +1,4 @@
+// share the user's email using context
 import { 
     createContext, useContext,
     useEffect, useMemo, useState
@@ -18,11 +19,13 @@ const UserProvider = ({ children }) => {
 
     return (
     <UserContext.Provider value={value}>
+        {/* use children prop to render child components from within a Provider */}
         {children}
     </UserContext.Provider>
     )
 }
 
+// use a custom hook to expose context state for reading/writing
 const useUser = () => {
     const context = useContext(UserContext)
 
