@@ -89,16 +89,19 @@ describe('<App />', () => {
     //   should render login page because of <PrivateRoute>
     // get email/password inputs & type in values
     const emailInput = screen.getByRole('textbox', {  name: /email/i})
-    userEvent.type(emailInput, 'test@user.email')
+    userEvent.type(emailInput, 'demo@demo.demo')
+    // userEvent.type(emailInput, 'test@user.email')
 
     const passwordInput = screen.getByLabelText(/password/i)
-    userEvent.type(passwordInput, 'mock_password')
+    userEvent.type(passwordInput, 'password')
+    // userEvent.type(passwordInput, 'mock_password')
 
     const signInButton = screen.getByRole('button', {  name: /sign in/i})
     userEvent.click(signInButton)
 
     // const signOutButton = await screen.getByRole('button', {  name: /sign out/i})
-    const heading = await screen.getByRole('heading', {  name: /latest entries:/i})
+    const heading = await screen.getByRole('heading')
+    // const heading = await screen.getByRole('heading', {  name: /latest entries:/i})
 
     expect(heading).toBeInTheDocument()
     })
