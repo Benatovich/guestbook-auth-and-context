@@ -13,9 +13,28 @@ export default function Header() {
 
   return (
     <div className='header'>
-        {/* <Link to='/'>
-            !!KEEP WORKING HERE!!
-        </Link> */}
+      <div>
+        <div>
+          <div>
+            <Link to='/'>
+              <span>Guestbook</span>
+              <img src={guestbook} alt='guestbook' />
+            </Link>
+          </div>
+          <div>
+            {user?.email ? (
+              <>
+                <p>Signed in as {user.email}</p>
+                <button onClick={handleSignOut}>
+                  Sign out
+                </button>
+              </>
+            ) : (
+              // WORK HERE
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
