@@ -4,7 +4,7 @@ import { useUser } from '../context/UserContext'
 import { signInUser, signUpUser } from '../services/user'
 import guestbook from '../assets/guestbook.png' 
 
-const Authentication = () => {
+const Login = () => {
     const history = useHistory()
     const { user, setUser } = useUser()
     const [isSigningUp, setIsSigningUp] = useState(false)
@@ -119,4 +119,4 @@ const Authentication = () => {
     )
 }
 
-export default Authentication
+export default Login

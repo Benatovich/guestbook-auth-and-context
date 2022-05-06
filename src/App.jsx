@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import { UserProvider } from './context/UserContext'
-import Authentication from './views/Authentication'
+import Login from './views/Login'
 import PrivateRoute from './components/PrivateRoute'
-import List from './views/List'
+import EntryList from './views/EntryList'
 
 export default function App() {
   return (
@@ -11,10 +11,10 @@ export default function App() {
       <Header />
       <Switch>
         <Route path='/login'>
-          <Authentication />
+          <Login />
         </Route>
         <PrivateRoute path='/'>
-          <List />
+          <EntryList />
         </PrivateRoute>
       </Switch>
     </UserProvider>
