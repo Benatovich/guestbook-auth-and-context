@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
@@ -83,42 +83,34 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe('<App />', () => {
-    it('renders a list of entries and adds a new entry when a user types one in and hits submit', async () => {
+    it('renders a list of entries and supports adding a new entry', async () => {
       render(
         <MemoryRouter>
           <UserProvider>
-            <App>
-                <Header />
-                <Switch>
-                    <Route path='/login'>
-                        <Login />
-                    </Route>
-                    <PrivateRoute exact path='/'>
-                        <EntryList />
-                    </PrivateRoute>
-                </Switch>
-            </App>
+            <App />
           </UserProvider>
         </MemoryRouter>
       );
 
-    //   should render login page because of <PrivateRoute>
+    // should render login page because of <PrivateRoute>
     // get email/password inputs & type in values
     const emailInput = screen.getByRole('textbox', {  name: /email/i})
-    userEvent.type(emailInput, 'demo@demo.demo')
-    // userEvent.type(emailInput, 'test@user.email')
+    // userEvent.type(emailInput, 'demo@demo.demo')
+    userEvent.type(emailInput, 'test@user.email')
 
     const passwordInput = screen.getByLabelText(/password/i)
-    userEvent.type(passwordInput, 'password')
-    // userEvent.type(passwordInput, 'mock_password')
+    // userEvent.type(passwordInput, 'password')
+    userEvent.type(passwordInput, 'mock_password')
 
     const signInButton = screen.getByRole('button', {  name: /sign in/i})
     userEvent.click(signInButton)
 
-    // const signOutButton = await screen.getByRole('button', {  name: /sign out/i})
-    const heading = await screen.getByRole('heading')
-    // const heading = await screen.getByRole('heading', {  name: /latest entries:/i})
-
-    expect(heading).toBeInTheDocument()
+    // const heading = await screen.getByRole('heading')
+    
+    waitFor(() => {
+        const signOutButton = screen.getByRole('button', {  name: /sign out/i})
+        const heading = screen.getByRole('heading', {  name: /latest entries:/i})
+        expect(heading, signOutButton).toBeInTheDocument()
+    })
     })
 });
