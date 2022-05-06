@@ -3,8 +3,14 @@ import userEvent from '@testing-library/user-event'
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import App from '../App';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import { UserProvider } from '../context/UserContext';
+import Header from '../components/Header'
+import PrivateRoute from '../components/PrivateRoute'
+import EntryList from './EntryList'
+import Login from './Login'
+
+
 
 const server = setupServer(
     rest.post(`${process.env.SUPABASE_API_URL}/auth/v1/token`, (req, res, ctx) => 
@@ -81,7 +87,17 @@ describe('<App />', () => {
       render(
         <MemoryRouter>
           <UserProvider>
-            <App />
+            <App>
+                <Header />
+                <Switch>
+                    <Route path='/login'>
+                        <Login />
+                    </Route>
+                    <PrivateRoute exact path='/'>
+                        <EntryList />
+                    </PrivateRoute>
+                </Switch>
+            </App>
           </UserProvider>
         </MemoryRouter>
       );
