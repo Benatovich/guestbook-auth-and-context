@@ -13,8 +13,6 @@ export default function Header() {
 
   return (
     <div className='header'>
-      <div>
-        <div>
           <div>
             <Link to='/'>
               <span>Guestbook</span>
@@ -30,11 +28,11 @@ export default function Header() {
                 </button>
               </>
             ) : (
-              // WORK HERE
+              <Link to='/login' href='#'>
+                Sign in
+              </Link>
             )}
           </div>
-        </div>
-      </div>
     </div>
   )
 }
